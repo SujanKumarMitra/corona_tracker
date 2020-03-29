@@ -71,7 +71,7 @@
               </form>
             </div>
              <p class="Lead">OR</p>
-             <p class="Lead"><a href="india_stat.jsp">CLick Here</a> to See Stats of Indian States</p>
+             <p class="Lead"><a href="india_stat.jsp">Click Here</a> to See Stats of Indian States</p>
         </center>
         </div>
         <div class="container mx-auto">
