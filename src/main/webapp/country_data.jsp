@@ -58,10 +58,6 @@
                         <td><%=data.getTotalCases() %></td>
                       </tr>
                       <tr>
-                      	<td>New Cases</td>
-                        <td><%=data.getNewCases() %></td>
-                      </tr>
-                      <tr>
                       	<td>Active Cases</td>
                         <td><%=data.getActiveCases() %></td>
                       </tr>

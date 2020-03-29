@@ -11,8 +11,6 @@
 	String apiKey = getServletContext().getInitParameter("key");
 	APIController controller = new APIController(apiHost,apiKey);
 	WorldStat worldStat = controller.getWorldStat();
-	AffectedCountryList affectedCountryList = controller.getAffectedCountryList();
-	List<String> countryList = affectedCountryList.getAffectedCountries();
 	CaseByCountries caseByCountries = controller.getCaseByCountries();
 	List<CountryStat> countryStat = caseByCountries.getCountriesStat();
 %>
@@ -65,7 +63,7 @@
             <hr class="my-4">
             <p class="Lead">Enter Country Name to get Details about a specific country </p>
             <div style="top: 50%; left: 50%;">
-            <form class="my-2 my-lg-0 sm" action="india_stat.jsp" method="GET">
+            <form class="my-2 my-lg-0 sm" action="GetCountryData" method="GET">
                 <input style="width: auto;" class="form-control mr-sm-2" name="country_name" type="search" placeholder="Enter Country Name" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
