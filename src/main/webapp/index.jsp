@@ -23,7 +23,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<link rel="icon" href="./icon.png" type="image/png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -45,6 +45,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>-->
             </ul>
+            <a class="nav-link" href="india_stat.jsp">Stats of Indian States</a>
             <form class="form-inline my-2 my-lg-0" action="GetCountryData" method="GET">
                 <input class="form-control mr-sm-2" name="country_name" type="search" placeholder="Enter Country Name" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -64,11 +65,13 @@
             <hr class="my-4">
             <p class="Lead">Enter Country Name to get Details about a specific country </p>
             <div style="top: 50%; left: 50%;">
-            <form class="my-2 my-lg-0 sm" action="GetCountryData" method="GET">
+            <form class="my-2 my-lg-0 sm" action="india_stat.jsp" method="GET">
                 <input style="width: auto;" class="form-control mr-sm-2" name="country_name" type="search" placeholder="Enter Country Name" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
             </div>
+             <p class="Lead">OR</p>
+             <p class="Lead"><a href="india_stat.jsp">CLick Here</a> to See Stats of Indian States</p>
         </center>
         </div>
         <div class="container mx-auto">

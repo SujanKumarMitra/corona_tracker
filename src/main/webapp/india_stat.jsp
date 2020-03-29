@@ -1,9 +1,15 @@
+<%@page import="com.herokuapp.corona_tracker.model.State"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.herokuapp.corona_tracker.controller.WebScrapper"%>
 <%@page import="com.herokuapp.corona_tracker.model.LatestStatByCountry"%>
 <%@page import="com.herokuapp.corona_tracker.model.LatestStatByCountryList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page errorPage="error.jsp" %>
 <%
-	LatestStatByCountryList list = (LatestStatByCountryList)session.getAttribute("country_data");
+	WebScrapper scrapper = new WebScrapper();
+	ArrayList<State> tableData = scrapper.getTableData();
+	State overallStat = scrapper.getTotalStat();
 %>
 <!doctype html>
 <html lang="en">
@@ -11,11 +17,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<link rel="icon" href="./icon.png" type="image/png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title><%=list.getCountry() %>'s Stats</title>
+    <title>Stat of Indian States</title>
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,59 +37,60 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>-->
             </ul>
+            <a class="nav-link" href="india_stat.jsp">Stats of Indian States</a>
             <form class="form-inline my-2 my-lg-0" action="GetCountryData">
                 <input class="form-control mr-sm-2" type="search" name="country_name" placeholder="Enter Country Name" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
         </div>
     </nav>
+    <div class="jumbotron">
+        
+        <center>
+            <h1 class="display-4">COVID-19 India's Statistics</h1>
+            <hr class="my-4">
+            <p class="lead">TOTAL CONFIRMED CASES OF INDIANS: <%= overallStat.getConfirmedIndian()  %></p>
+            <p class="lead">TOTAL CONFIRMED CASES OF FOREIGNERS: <%= overallStat.getConfirmedForeign()  %></p>
+            <p class="lead">TOTAL DEATHS: <%= overallStat.getDeath() %></p>
+            <p class="lead">TOTAL RECOVERED: <%=overallStat.getCured() %></p>
+           <!--  <hr class="my-4"> -->
+            <!-- <p class="Lead">Enter Country Name to get Details about a specific country </p>
+            <div style="top: 50%; left: 50%;">
+            <form class="my-2 my-lg-0 sm" action="GetCountryData" method="GET">
+                <input style="width: auto;" class="form-control mr-sm-2" name="country_name" type="search" placeholder="Enter Country Name" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div> -->
+        </center>
+        </div>
     <div class="container">
-    	<%if(list.getCountryStat().isEmpty() || list == null) {%>
-    		<h2><p class="text-center" style="font-size: 30px;">No data found on <%=list.getCountry() %></p></h2>
-    		<h2><p class="text-center" style="font-size: 30px;"><a href="index.jsp">Click here</a> to go to main page</h2>
-    	<%}else { LatestStatByCountry data = list.getCountryStat().get(0); %>
-    	<p class="text-center" style="font-size: 30px;">Details about <%=data.getCountryName()  %></p>
-    	<div class="table-responsive-xl">
+    	<p class="text-center" style="font-size: 30px;">Details about Indian States and Territories</p>
+    	<p class="text-center" style="font-size: 30px;">Data is synchronized with <a href="https://www.mohfw.gov.in/">MOHFW</a> </p>
+    	<div class="table-responsive-lg">
                 <table class="table">
                     <thead class="thead-dark">
                       <tr>
-                        <th scope="col">Properties</th>
-                       <th scope="col">Values</th>
+                        <th scope="col">Sl No.</th>
+                         <th scope="col">State/Territory</th>
+                          <th scope="col">Confirmed(Indian)</th>
+                           <th scope="col">Confirmed(Foreign)</th>
+                            <th scope="col">Cured</th>
+                             <th scope="col">Death</th>
                       </tr>
                     </thead>
                     <tbody>
-                    
-                      <tr> 
-                        <td>Total Cases</td>
-                        <td><%=data.getTotalCases() %></td>
-                      </tr>
-                      <tr>
-                      	<td>New Cases</td>
-                        <td><%=data.getNewCases() %></td>
-                      </tr>
-                      <tr>
-                      	<td>Active Cases</td>
-                        <td><%=data.getActiveCases() %></td>
-                      </tr>
-                     <tr>
-                      	<td>Total Deaths</td>
-                        <td><%=data.getTotalDeaths() %></td>
-                      </tr>
-                      <tr>
-                      	<td>New Deaths</td>
-                        <td><%=data.getNewDeaths()%></td>
-                      </tr>
-                      <tr>
-                      	<td>Total Recovered</td>
-                        <td><%=data.getTotalRecovered() %></td>
-                      </tr>
-                      <tr>
-                      	<td>Critical Cases</td>
-                        <td><%=data.getSeriousCritical() %></td>
-                      </tr>
+                    	<%for(State row:tableData) { %>
+                    		<tr>
+                    			<td><%=row.getId() %></td>
+                    			<td><%=row.getName() %></td>
+                    			<td><%=row.getConfirmedIndian() %></td>
+                    			<td><%=row.getConfirmedForeign() %></td>
+                    			<td><%=row.getCured() %></td>
+                    			<td><%=row.getDeath() %></td>
+                    		</tr>
+                    	<%} %>
                     </tbody>
                   </table>
-                  <%} %>
             </div>
     </div>
 
