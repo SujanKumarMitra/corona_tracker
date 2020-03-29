@@ -31,9 +31,9 @@ public class WebScrapper {
 		super();
 		this.totalStat = new State();
 		this.tableData = new ArrayList<>();
-//		this.tableHeader = new ArrayList<>();
+		this.tableHeader = new ArrayList<>();
 		this.tableData = setTableData();
-//		this.tableHeader = setTableHeader();
+		this.tableHeader = setTableHeader();
 	}
 
 	private ArrayList<State> setTableData() {
@@ -41,6 +41,7 @@ public class WebScrapper {
 			Document document = Jsoup.connect(this.url).get();
 			Elements tableBody = document.getElementById("cases").getElementsByClass("table-responsive").get(0)
 					.getElementsByTag("tbody");
+			System.out.println(tableBody);
 			for (Element row : tableBody) {
 				Elements tableRow = row.getElementsByTag("tr");
 				for (Element rows : tableRow) {

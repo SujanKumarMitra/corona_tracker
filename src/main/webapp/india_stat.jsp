@@ -9,6 +9,7 @@
 <%
 	WebScrapper scrapper = new WebScrapper();
 	ArrayList<State> tableData = scrapper.getTableData();
+	ArrayList<String> tableHeader = scrapper.getTableHeader();
 	State overallStat = scrapper.getTotalStat();
 %>
 <!doctype html>
@@ -49,8 +50,7 @@
         <center>
             <h1 class="display-4">COVID-19 India's Statistics</h1>
             <hr class="my-4">
-            <p class="lead">TOTAL CONFIRMED CASES OF INDIANS: <%= overallStat.getConfirmedIndian()  %></p>
-            <p class="lead">TOTAL CONFIRMED CASES OF FOREIGNERS: <%= overallStat.getConfirmedForeign()  %></p>
+            <p class="lead">TOTAL CONFIRMED CASES: <%= overallStat.getConfirmedIndian()  %></p>
             <p class="lead">TOTAL DEATHS: <%= overallStat.getDeath() %></p>
             <p class="lead">TOTAL RECOVERED: <%=overallStat.getCured() %></p>
            <!--  <hr class="my-4"> -->
@@ -69,22 +69,25 @@
     	<div class="table-responsive-lg">
                 <table class="table">
                     <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">Sl No.</th>
-                         <th scope="col">State/Territory</th>
-                          <th scope="col">Confirmed(Indian)</th>
-                           <th scope="col">Confirmed(Foreign)</th>
-                            <th scope="col">Cured</th>
-                             <th scope="col">Death</th>
-                      </tr>
-                    </thead>
+					<tr>
+						<!-- <th scope="col">Sl No.</th>
+						<th scope="col">State/Territory</th>
+						<th scope="col">Confirmed</th>
+						<th scope="col">Cured</th>
+						<th scope="col">Death</th> -->
+						<%for(String header:tableHeader) { %>
+						<th scope="col"><%=header %></th>
+						<%} %>
+					</tr>
+				</thead>
                     <tbody>
-                    	<%for(State row:tableData) { %>
+                    	<%
+                    		for (State row : tableData) {
+                    	%>
                     		<tr>
                     			<td><%=row.getId() %></td>
                     			<td><%=row.getName() %></td>
                     			<td><%=row.getConfirmedIndian() %></td>
-                    			<td><%=row.getConfirmedForeign() %></td>
                     			<td><%=row.getCured() %></td>
                     			<td><%=row.getDeath() %></td>
                     		</tr>

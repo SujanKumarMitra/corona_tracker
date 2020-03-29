@@ -65,20 +65,20 @@ public class State {
 	}
 	
 	public void setValues(ArrayList<String> data) {
-		if(data.size()==6) {
+		if(data.size()==5) {
 			this.setId(data.get(0));
 			this.setName(data.get(1));
 			this.setConfirmedIndian(data.get(2));
-			this.setConfirmedForeign(data.get(3));
-			this.setCured(data.get(4));
-			this.setDeath(data.get(5));
-		}
-		else if(data.size()==5) {
-			this.setName(data.get(0));
-			this.setConfirmedIndian(data.get(1));
 			this.setConfirmedForeign(data.get(2));
 			this.setCured(data.get(3));
 			this.setDeath(data.get(4));
+		}
+		else if(data.size()==4) {
+			this.setName(data.get(0));
+			this.setConfirmedIndian(data.get(1));
+			this.setConfirmedForeign(data.get(1));
+			this.setCured(data.get(2));
+			this.setDeath(data.get(3));
 		}
 	}
 
