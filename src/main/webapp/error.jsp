@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<link rel="icon" href="./icon.png" type="image/png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -15,7 +15,7 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.jsp">COVID-19 Tracker</a>
+        <a class="navbar-brand" href="./index.jsp">COVID-19 Tracker</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,6 +27,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>-->
             </ul>
+            <a class="nav-link" href="./india_stat.jsp">Stats of Indian States</a>
             <form class="form-inline my-2 my-lg-0" action="GetCountryData">
                 <input class="form-control mr-sm-2" type="search" name="country_name" placeholder="Enter Country Name" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -34,8 +35,8 @@
         </div>
     </nav>
     <div class="container" align="center">
-    	<h2>The resource is not found in the server.</h2>
-    	<h2> Please try again after some time.</h2>
+    	<h2>The resource you are looking for is not found on the server.</h2>
+    	<h2> <a href="index.jsp">Click here</a> to go to main page </h2>
     </div>
 
     <!-- Optional JavaScript -->
