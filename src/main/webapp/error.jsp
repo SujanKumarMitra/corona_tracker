@@ -15,7 +15,10 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="./index.jsp">COVID-19 Tracker</a>
+  				<!--uncomment this in local server  -->
+  		<!-- <a class="navbar-brand" href="./index.jsp">COVID-19 Tracker</a> -->
+  		<!--  live server url -->
+        <a class="navbar-brand" href="https://skm-corona-tracker.herokuapp.com/">COVID-19 Tracker</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,7 +39,10 @@
     </nav>
     <div class="container" align="center">
     	<h2>The resource you are looking for is not found on the server.</h2>
-    	<h2> <a href="index.jsp">Click here</a> to go to main page </h2>
+<!--     		Uncomment this for local server -->
+<!--     	<h2> <a href="./index.jsp">Click here</a> to go to main page </h2> -->
+				<!-- live server url -->
+			<h2><a href="https://skm-corona-tracker.herokuapp.com/">Click here</a> to go to main page </h2>
     </div>
 
     <!-- Optional JavaScript -->
