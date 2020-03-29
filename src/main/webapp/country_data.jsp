@@ -78,6 +78,10 @@
                       	<td>Critical Cases</td>
                         <td><%=data.getSeriousCritical() %></td>
                       </tr>
+                      <tr>
+                      	<td>Last Refresh</td>
+                        <td><%=data.getRecordDate() %></td>
+                      </tr>
                     </tbody>
                   </table>
                   <%} %>

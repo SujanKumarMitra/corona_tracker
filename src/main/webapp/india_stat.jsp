@@ -1,4 +1,4 @@
-<%@page import="com.herokuapp.corona_tracker.model.State"%>
+<%@page import="com.herokuapp.corona_tracker.model.MOHFWOverallStat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.herokuapp.corona_tracker.controller.WebScrapper"%>
 <%@page import="com.herokuapp.corona_tracker.model.LatestStatByCountry"%>
@@ -8,9 +8,9 @@
     <%@page errorPage="error.jsp" %>
 <%
 	WebScrapper scrapper = new WebScrapper();
-	ArrayList<State> tableData = scrapper.getTableData();
+	ArrayList<ArrayList<String>> tableData = scrapper.getTableData();
 	ArrayList<String> tableHeader = scrapper.getTableHeader();
-	State overallStat = scrapper.getTotalStat();
+	MOHFWOverallStat overallStat = scrapper.getTotalStat();
 %>
 <!doctype html>
 <html lang="en">
@@ -50,9 +50,9 @@
         <center>
             <h1 class="display-4">COVID-19 India's Statistics</h1>
             <hr class="my-4">
-            <p class="lead">TOTAL CONFIRMED CASES: <%= overallStat.getConfirmedIndian()  %></p>
-            <p class="lead">TOTAL DEATHS: <%= overallStat.getDeath() %></p>
-            <p class="lead">TOTAL RECOVERED: <%=overallStat.getCured() %></p>
+            <p class="lead">TOTAL CONFIRMED CASES: <%=overallStat.getTotalConfirmedCases()%></p>
+            <p class="lead">TOTAL DEATHS: <%=overallStat.getDeath()%></p>
+            <p class="lead">TOTAL RECOVERED: <%=overallStat.getCured()%></p>
            <!--  <hr class="my-4"> -->
             <!-- <p class="Lead">Enter Country Name to get Details about a specific country </p>
             <div style="top: 50%; left: 50%;">
@@ -65,7 +65,7 @@
         </div>
     <div class="container">
     	<p class="text-center" style="font-size: 30px;">Details about Indian States and Territories</p>
-    	<p class="text-center" style="font-size: 30px;">Data is synchronized with <a href="https://www.mohfw.gov.in/">MOHFW</a> </p>
+    	<p class="text-center" style="font-size: 25px;">Data fetched from <a href="https://www.mohfw.gov.in/">MOHFW</a> at <%=overallStat.getDate() %> </p>
     	<div class="table-responsive-lg">
                 <table class="table">
                     <thead class="thead-dark">
@@ -75,21 +75,23 @@
 						<th scope="col">Confirmed</th>
 						<th scope="col">Cured</th>
 						<th scope="col">Death</th> -->
-						<%for(String header:tableHeader) { %>
-						<th scope="col"><%=header %></th>
-						<%} %>
+						<%
+							for(String header:tableHeader) {
+						%>
+						<th scope="col"><%=header%></th>
+						<%
+							}
+						%>
 					</tr>
 				</thead>
                     <tbody>
                     	<%
-                    		for (State row : tableData) {
+                    		for (ArrayList<String> rowData : tableData) {
                     	%>
                     		<tr>
-                    			<td><%=row.getId() %></td>
-                    			<td><%=row.getName() %></td>
-                    			<td><%=row.getConfirmedIndian() %></td>
-                    			<td><%=row.getCured() %></td>
-                    			<td><%=row.getDeath() %></td>
+                    			<%for(String data:rowData) {%>
+                    			<td><%=data %></td>
+                    			<%} %>
                     		</tr>
                     	<%} %>
                     </tbody>

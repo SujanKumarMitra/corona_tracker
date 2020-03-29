@@ -74,6 +74,7 @@
         </div>
         <div class="container mx-auto">
             <p class="text-center" style="font-size: 30px;">Country Wise Stats:</p>
+            <p class="text-center" style="font-size: 20px;">Data Refreshed On <%=caseByCountries.getStatisticTakenAt() %></p>
             <div class="table-responsive-xl">
                 <table class="table">
                     <thead class="thead-dark">
