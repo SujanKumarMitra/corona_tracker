@@ -7,15 +7,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.herokuapp.corona_tracker.model.MOHFWOverallStat;
-
 public class WebScrapper {
 
 	private String url = "https://www.mohfw.gov.in";
 	private ArrayList<ArrayList<String>> tableData = null;
 	private Document document = null;
 	private ArrayList<String> tableHeader = null;
-	private MOHFWOverallStat totalStat = null;
+	private String date;
 	
 
 	public ArrayList<ArrayList<String>> getTableData() {
@@ -25,9 +23,8 @@ public class WebScrapper {
 	public ArrayList<String> getTableHeader() {
 		return tableHeader;
 	}
-
-	public MOHFWOverallStat getTotalStat() {
-		return totalStat;
+	public String getDate() {
+		return date;
 	}
 
 	public WebScrapper() {
@@ -37,7 +34,6 @@ public class WebScrapper {
 		} catch (IOException e) {
 			return;
 		}
-		this.totalStat = null;
 		this.tableData = new ArrayList<>();
 		this.tableHeader = new ArrayList<>();
 		this.tableData = setTableData();
@@ -60,8 +56,6 @@ public class WebScrapper {
 					this.tableData.add(rowValueList);
 				}
 			}
-			this.totalStat = new MOHFWOverallStat(tableData.get(tableData.size() - 1));
-			tableData.remove(tableData.size() - 1);
 			return tableData;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,7 +79,7 @@ public class WebScrapper {
 	private void setDate() {
 		Elements dateRow = document.getElementById("cases").getElementsByClass("content newtab").get(0).getElementsByTag("p").get(0).getElementsByTag("strong");
 		String date = dateRow.text().substring(dateRow.text().length() - "00.00.0000 at 00:00 PM)".length(),dateRow.text().length()-1);
-		totalStat.setDate(date);
+		this.date=date;
 	}
 	public static void main(String[] args) {
 		WebScrapper obj = new WebScrapper();

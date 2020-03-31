@@ -1,4 +1,3 @@
-<%@page import="com.herokuapp.corona_tracker.model.MOHFWOverallStat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.herokuapp.corona_tracker.controller.WebScrapper"%>
 <%@page import="com.herokuapp.corona_tracker.model.LatestStatByCountry"%>
@@ -10,7 +9,7 @@
 	WebScrapper scrapper = new WebScrapper();
 	ArrayList<ArrayList<String>> tableData = scrapper.getTableData();
 	ArrayList<String> tableHeader = scrapper.getTableHeader();
-	MOHFWOverallStat overallStat = scrapper.getTotalStat();
+	String date = scrapper.getDate();
 %>
 <!doctype html>
 <html lang="en">
@@ -50,22 +49,10 @@
         <center>
             <h1 class="display-4">COVID-19 India's Statistics</h1>
             <hr class="my-4">
-            <p class="lead">TOTAL CONFIRMED CASES: <%=overallStat.getTotalConfirmedCases()%></p>
-            <p class="lead">TOTAL DEATHS: <%=overallStat.getDeath()%></p>
-            <p class="lead">TOTAL RECOVERED: <%=overallStat.getCured()%></p>
-           <!--  <hr class="my-4"> -->
-            <!-- <p class="Lead">Enter Country Name to get Details about a specific country </p>
-            <div style="top: 50%; left: 50%;">
-            <form class="my-2 my-lg-0 sm" action="GetCountryData" method="GET">
-                <input style="width: auto;" class="form-control mr-sm-2" name="country_name" type="search" placeholder="Enter Country Name" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div> -->
-        </center>
         </div>
     <div class="container">
     	<p class="text-center" style="font-size: 30px;">Details about Indian States and Territories</p>
-    	<p class="text-center" style="font-size: 25px;">Data fetched from <a href="https://www.mohfw.gov.in/">MOHFW</a> at <%=overallStat.getDate() %> </p>
+    	<p class="text-center" style="font-size: 25px;">Data fetched from <a href="https://www.mohfw.gov.in/">MOHFW</a> at <%=date %> </p>
     	<div class="table-responsive-lg">
                 <table class="table">
                     <thead class="thead-dark">
