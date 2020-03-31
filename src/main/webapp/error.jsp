@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page isErrorPage="true" %>
+<%@page isErrorPage="true" isELIgnored="false" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -43,6 +43,7 @@
 <!--     	<h2> <a href="./index.jsp">Click here</a> to go to main page </h2> -->
 				<!-- live server url -->
 			<h2><a href="https://skm-corona-tracker.herokuapp.com/">Click here</a> to go to main page </h2>
+			
     </div>
 
     <!-- Optional JavaScript -->

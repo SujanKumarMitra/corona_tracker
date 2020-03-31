@@ -91,7 +91,7 @@ public class APIController {
 	public WorldStat getWorldStat() {
 		try {
 			Response response = ClientBuilder.newClient()
-					.target("https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php")
+					.target("https://coronavirus-monitor.p.rapidapi.com/coronavirus/world_total_stat.php")
 					.request()
 					.header("x-rapidapi-host", this.apiHost)
 					.header("x-rapidapi-key", this.apiKey)

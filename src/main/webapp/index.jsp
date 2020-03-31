@@ -4,7 +4,7 @@
 <%@page import="com.herokuapp.corona_tracker.model.CaseByCountries"%>
 <%@page import="com.herokuapp.corona_tracker.model.AffectedCountryList"%>
 <%@page import="com.herokuapp.corona_tracker.model.WorldStat"%>
-<%@page errorPage="error.jsp" %>
+<%-- <%@page errorPage="error.jsp" %> --%>
 <%
 
 	String apiHost = getServletContext().getInitParameter("host");
