@@ -23,6 +23,11 @@ public class HomeController {
 		return "/view/index.jsp";
 	}
 	
+	@RequestMapping("/home")
+	public String getMain(Model model) {
+		return getHome(model);
+	}
+	
 	@RequestMapping("/getCountryData")
 	public String getCountryData(@RequestParam("country_name") String countryName,Model model){
 		model.addAttribute("countryData", controller.getLatestStatByCountry(countryName));

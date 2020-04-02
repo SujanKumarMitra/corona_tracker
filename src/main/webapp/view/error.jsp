@@ -24,7 +24,7 @@
 		<!-- <a class="navbar-brand" href="./index.jsp">COVID-19 Tracker</a> -->
 		<!--  live server url -->
 		<a class="navbar-brand"
-			href="./">COVID-19 Tracker</a>
+			href="/">COVID-19 Tracker</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -52,7 +52,7 @@
 		<h2>The resource you are looking for is not found on the server.</h2>
 		
 		<h2>
-			<a href="./">Click here</a> to
+			<a href="/">Click here</a> to
 			go to main page
 		</h2>
 
