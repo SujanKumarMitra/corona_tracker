@@ -8,17 +8,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-	"countries_stat",
-	"statistic_taken_at"
-})
+@JsonPropertyOrder({ "countries_stat", "statistic_taken_at" })
 public class CaseByCountries {
 
 	@Override
 	public String toString() {
 		return "CaseByCountries [countryStats=" + countryStats + ", statisticTakenAt=" + statisticTakenAt + "]";
 	}
-	
+
 	@JsonProperty("countries_stat")
 	private List<CountryStat> countryStats = null;
 	@JsonProperty("statistic_taken_at")
@@ -34,15 +31,15 @@ public class CaseByCountries {
 				String str2 = o2.getCases();
 				str1 = str1.replace(",", "");
 				str2 = str2.replace(",", "");
-				if(Integer.parseInt(str1)>Integer.parseInt(str2)) {
+				if (Integer.parseInt(str1) > Integer.parseInt(str2)) {
 					return -1;
-				}
-				else {
+				} else {
 					return 1;
 				}
 			}
-			
-		});;
+
+		});
+		;
 		return countryStats;
 	}
 
@@ -60,6 +57,5 @@ public class CaseByCountries {
 	public void setStatisticTakenAt(String statisticTakenAt) {
 		this.statisticTakenAt = statisticTakenAt;
 	}
-	
 
 }

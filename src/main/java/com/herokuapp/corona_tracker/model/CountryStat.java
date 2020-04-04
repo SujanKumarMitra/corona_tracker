@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 		"serious_critical", "active_cases", "total_cases_per_1m_population" })
 public class CountryStat {
 
-	
 	@JsonProperty("country_name")
 	private String countryName;
 	@JsonProperty("cases")
@@ -130,6 +129,7 @@ public class CountryStat {
 	public void setTotalCasesPer1mPopulation(String totalCasesPer1mPopulation) {
 		this.totalCasesPer1mPopulation = totalCasesPer1mPopulation;
 	}
+
 	@Override
 	public String toString() {
 		return "CountryStatDetails [countryName=" + countryName + ", cases=" + cases + ", deaths=" + deaths

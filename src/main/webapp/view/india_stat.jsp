@@ -75,17 +75,17 @@
 						<th scope="col">Confirmed</th>
 						<th scope="col">Cured</th>
 						<th scope="col">Death</th> -->
-						<%-- <%
+						<%
 							for(String header:tableHeader) {
 						%>
 						<th scope="col"><%=header%></th>
 						<%
 							}
-						%> --%>
+						%>
 					</tr>
 				</thead>
 				<tbody>
-					<%-- <%
+					<%
                     		for (ArrayList<String> rowData : tableData) {
                     	%>
 					<tr>
@@ -93,7 +93,7 @@
 						<td><%=data %></td>
 						<%} %>
 					</tr>
-					<%} %> --%>
+					<%} %>
 				</tbody>
 			</table>
 		</div>

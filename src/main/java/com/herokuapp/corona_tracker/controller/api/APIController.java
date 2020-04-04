@@ -19,16 +19,14 @@ public class APIController {
 	public String toString() {
 		return "APIController [properties=" + properties + "]";
 	}
+
 	@Autowired
 	APIProperties properties;
 
 	public AffectedCountryList getAffectedCountryList() {
 		try {
-			Response response = ClientBuilder.newClient()
-					.target(properties.getWorldStatUrl())
-					.request()
-					.header("x-rapidapi-host", properties.getApiHost())
-					.header("x-rapidapi-key", properties.getApiKey())
+			Response response = ClientBuilder.newClient().target(properties.getWorldStatUrl()).request()
+					.header("x-rapidapi-host", properties.getApiHost()).header("x-rapidapi-key", properties.getApiKey())
 					.get();
 			if (response.getStatus() == 200) {
 				String output = response.readEntity(String.class);
@@ -45,15 +43,12 @@ public class APIController {
 		return null;
 
 	}
+
 	public LatestStatByCountryList getLatestStatByCountry(String country) {
 		try {
-			Response response = ClientBuilder.newClient()
-					.target(properties.getLatestStatByCountryUrl())
-					.queryParam("country", country)
-					.request()
-					.header("x-rapidapi-host", properties.getApiHost())
-					.header("x-rapidapi-key", properties.getApiKey())
-					.get();
+			Response response = ClientBuilder.newClient().target(properties.getLatestStatByCountryUrl())
+					.queryParam("country", country).request().header("x-rapidapi-host", properties.getApiHost())
+					.header("x-rapidapi-key", properties.getApiKey()).get();
 			if (response.getStatus() == 200) {
 				String output = response.readEntity(String.class);
 				ObjectMapper mapper = new ObjectMapper();
@@ -68,13 +63,11 @@ public class APIController {
 		}
 		return null;
 	}
+
 	public WorldStat getWorldStat() {
 		try {
-			Response response = ClientBuilder.newClient()
-					.target(properties.getWorldStatUrl())
-					.request()
-					.header("x-rapidapi-host", properties.getApiHost())
-					.header("x-rapidapi-key", properties.getApiKey())
+			Response response = ClientBuilder.newClient().target(properties.getWorldStatUrl()).request()
+					.header("x-rapidapi-host", properties.getApiHost()).header("x-rapidapi-key", properties.getApiKey())
 					.get();
 			if (response.getStatus() == 200) {
 				String output = response.readEntity(String.class);
@@ -90,13 +83,11 @@ public class APIController {
 		}
 		return null;
 	}
+
 	public CaseByCountries getCaseByCountries() {
 		try {
-			Response response = ClientBuilder.newClient()
-					.target(properties.getCaseByCountriesUrl())
-					.request()
-					.header("x-rapidapi-host", properties.getApiHost())
-					.header("x-rapidapi-key", properties.getApiKey())
+			Response response = ClientBuilder.newClient().target(properties.getCaseByCountriesUrl()).request()
+					.header("x-rapidapi-host", properties.getApiHost()).header("x-rapidapi-key", properties.getApiKey())
 					.get();
 			if (response.getStatus() == 200) {
 				String output = response.readEntity(String.class);

@@ -7,19 +7,19 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource("classpath:application.properties")
 public class APIProperties {
-	
+
 	@Value("${api_host}")
 	private String apiHost;
-	
+
 	@Value("${api_key}")
 	private String apiKey;
-	
+
 	@Value("${world_stat_url}")
 	private String worldStatUrl;
-	
+
 	@Value("${case_by_countries_url}")
 	private String caseByCountriesUrl;
-	
+
 	@Value("${latest_stat_by_country_url}")
 	private String latestStatByCountryUrl;
 
@@ -69,11 +69,5 @@ public class APIProperties {
 				+ ", caseByCountriesUrl=" + caseByCountriesUrl + ", latestStatByCountryUrl=" + latestStatByCountryUrl
 				+ "]";
 	}
-
-	
-	
-	
-	
-	
 
 }

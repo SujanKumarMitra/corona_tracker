@@ -8,7 +8,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 
-
 public class WebScrapper {
 
 	private String url = "https://www.mohfw.gov.in";
@@ -16,7 +15,6 @@ public class WebScrapper {
 	private Document document = null;
 	private ArrayList<String> tableHeader = null;
 	private String date;
-	
 
 	public ArrayList<ArrayList<String>> getTableData() {
 		return tableData;
@@ -25,6 +23,7 @@ public class WebScrapper {
 	public ArrayList<String> getTableHeader() {
 		return tableHeader;
 	}
+
 	public String getDate() {
 		return date;
 	}
@@ -45,19 +44,19 @@ public class WebScrapper {
 
 	private ArrayList<ArrayList<String>> setTableData() {
 		try {
-			Elements tableBody = document.getElementById("cases").getElementsByClass("table-responsive").get(0)
-					.getElementsByTag("tbody");
-			for (Element row : tableBody) {
-				Elements tableRow = row.getElementsByTag("tr");
-				for (Element rows : tableRow) {
-					Elements rowData = rows.getElementsByTag("td");
-					ArrayList<String> rowValueList = new ArrayList<>();
-					for (Element tmp : rowData) {
-						rowValueList.add(tmp.text());
-					}
-					this.tableData.add(rowValueList);
+			Elements rowData = document.getElementsByClass("data-table table-responsive").get(0)
+					.getElementsByTag("tbody").get(0).getElementsByTag("tr");
+//			System.out.println(rowData);
+
+			for (Element rows : rowData) {
+				Elements row = rows.getElementsByTag("td");
+				ArrayList<String> rowValue = new ArrayList<String>();
+				for (Element data : row) {
+					rowValue.add(data.text());
 				}
+				this.tableData.add(rowValue);
 			}
+
 			return tableData;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,8 +66,9 @@ public class WebScrapper {
 
 	private ArrayList<String> setTableHeader() {
 		try {
-			Elements tableRow = document.getElementById("cases").getElementsByClass("table-responsive").get(0)
+			Elements tableRow = document.getElementsByClass("data-table table-responsive").get(0)
 					.getElementsByTag("th");
+//			System.out.println(tableRow.html());
 			for (Element rowData : tableRow) {
 				this.tableHeader.add(rowData.text());
 			}
@@ -78,17 +78,23 @@ public class WebScrapper {
 		}
 		return null;
 	}
+
 	private void setDate() {
 		try {
-			Elements dateRow = document.getElementById("cases").getElementsByClass("content newtab").get(0).getElementsByTag("p").get(0).getElementsByTag("strong");
-			String date = dateRow.text().substring(dateRow.text().length() - "00.00.0000 at 00:00 PM)".length(),dateRow.text().length()-1);
-			this.date=date;
+			Elements dateRow = document.getElementsByClass("status-update").get(0).getElementsByTag("span");
+			String date = dateRow.text().substring("as on : ".length(), dateRow.text().length());
+//			System.out.println(date);
+			this.date = date;
 		} catch (Exception e) {
 			date = "";
 		}
 	}
+
 	public static void main(String[] args) {
 		WebScrapper obj = new WebScrapper();
-		obj.setDate();
+//		System.out.println(obj.getTableHeader());
+//		System.out.println(obj.getTableData());
+//		System.out.println(obj.getDate());
+
 	}
 }
